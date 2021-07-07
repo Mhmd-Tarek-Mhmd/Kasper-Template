@@ -169,11 +169,11 @@
         </div>
 
         <ul id="shuffler-controls">
-          <li class="active">All</li>
-          <li>App</li>
-          <li>Photography</li>
-          <li>Web</li>
-          <li>Print</li>
+          <li class="active" onclick="showAll(this)">All</li>
+          <li onclick="shuffle(this)">App</li>
+          <li onclick="shuffle(this)">Photography</li>
+          <li onclick="shuffle(this)">Web</li>
+          <li onclick="shuffle(this)">Print</li>
         </ul>
 
         <!-- [1] Images -->
@@ -478,5 +478,26 @@
 
       <div class="copy">&copy; 2014 - <span>Kasper</span> All Right Reserved</div>
     </footer>
+
+    <script>
+      // Global Variables
+      const AllGalleryImages = document.querySelectorAll('.portfolio .images > div');
+      let btnCategoryFilter;
+
+      // Helper Functions
+      function shuffle(e) {
+        handleActiveBtns(e);
+        btnCategoryFilter = e.innerHTML;
+        AllGalleryImages.forEach(image => image.dataset.category === btnCategoryFilter ? image.style.display = 'block' : image.style.display = 'none');
+      }
+      function showAll(e) {
+        handleActiveBtns(e);
+        AllGalleryImages.forEach(image => image.style.display = 'block');
+      }
+      function handleActiveBtns(target) {
+        document.querySelectorAll('#shuffler-controls li').forEach(e => e.classList.remove('active'));
+        target.classList.add('active');
+      }
+    </script>
   </body>
 </html>
