@@ -120,6 +120,7 @@ main section {
   color: var(--white);
   background-image: url(../img/header.jpg);
   background-size: cover;
+  background-position: center;
   height: 100vh;
   position: relative;
 }
